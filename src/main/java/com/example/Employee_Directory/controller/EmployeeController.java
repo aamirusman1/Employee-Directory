@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -40,6 +41,7 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee emp){
         Employee savedEmployee = employeeService.addEmployee(emp);
+        logger.info("Employee added successfully");
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED); //201 Created
     }
 
@@ -50,6 +52,7 @@ public class EmployeeController {
             return new ResponseEntity<>(emp.get(), HttpStatus.OK);
         }
         //return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404 Not Found
+        logger.warn("Employee with id: "+id+" does not exist");
         throw new EmployeeNotFoundException("Employee with id: "+ id +" does not exist"); //here we get custom response
     }
 
