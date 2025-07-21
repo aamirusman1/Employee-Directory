@@ -1,5 +1,6 @@
 package com.example.Employee_Directory.controller;
 
+import com.example.Employee_Directory.exception.custom.EmployeeNotFoundException;
 import com.example.Employee_Directory.model.Employee;
 import com.example.Employee_Directory.service.service_impl.EmployeeServiceImpl;
 import org.slf4j.Logger;
@@ -48,7 +49,8 @@ public class EmployeeController {
         if(emp.isPresent()){
             return new ResponseEntity<>(emp.get(), HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404 Not Found
+        //return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404 Not Found
+        throw new EmployeeNotFoundException("Employee with id: "+ id +" does not exist"); //here we get custom response
     }
 
     @PutMapping("/{id}")
@@ -57,7 +59,8 @@ public class EmployeeController {
             Employee updatedEmployee = employeeService.updateEmployee(id, emp);
             return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            //return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            throw new EmployeeNotFoundException("Employee with id: "+ id +" does not exist"); //here we get custom response
         }
     }
 
@@ -67,7 +70,8 @@ public class EmployeeController {
             String employeeDeleted = employeeService.deleteEmployee(id);
             return new ResponseEntity<>(employeeDeleted, HttpStatus.OK);
         } catch (RuntimeException e) {
-           return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+           //return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            throw new EmployeeNotFoundException("Employee with id: "+ id +" does not exist"); //here we get custom response
         }
     }
 
