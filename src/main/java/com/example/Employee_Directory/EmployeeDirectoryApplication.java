@@ -8,12 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EmployeeDirectoryApplication {
 
-	private static final Logger logger =LoggerFactory.getLogger(EmployeeDirectoryApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeDirectoryApplication.class, args);
-		System.out.println("Application Emp Directory started");
-		logger.info("Application Emp Directory started using log");
 	}
 
 }
