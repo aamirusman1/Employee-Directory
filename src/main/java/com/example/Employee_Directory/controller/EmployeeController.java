@@ -1,5 +1,6 @@
 package com.example.Employee_Directory.controller;
 
+import com.example.Employee_Directory.dto.EmployeeDTO;
 import com.example.Employee_Directory.exception.custom.EmployeeNotFoundException;
 import com.example.Employee_Directory.model.Employee;
 import com.example.Employee_Directory.service.service_impl.EmployeeServiceImpl;
@@ -42,8 +43,8 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee emp){
-        Employee savedEmployee = employeeService.addEmployee(emp);
+    public ResponseEntity<Employee> addEmployee(@RequestBody EmployeeDTO empDTO){
+        Employee savedEmployee = employeeService.addEmployee(empDTO);
         log.info("addEmployee returned {}", savedEmployee);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED); //201 Created
     }

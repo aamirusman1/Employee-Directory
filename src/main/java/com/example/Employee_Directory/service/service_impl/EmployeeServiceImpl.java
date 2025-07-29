@@ -1,5 +1,7 @@
 package com.example.Employee_Directory.service.service_impl;
 
+import com.example.Employee_Directory.dto.EmployeeDTO;
+import com.example.Employee_Directory.mapper.EmployeePopulator;
 import com.example.Employee_Directory.model.Employee;
 import com.example.Employee_Directory.repository.EmployeeRepo;
 import com.example.Employee_Directory.service.EmployeeService;
@@ -7,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,8 +30,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee addEmployee(Employee emp) {
-        return employeeRepo.save(emp);
+    public Employee addEmployee(EmployeeDTO empDTO) {
+        Employee employee = EmployeePopulator.INSTANCE.populateEmployee(empDTO);
+        employee.setCreatedAt(new Date());
+        return employeeRepo.save(employee);
     }
 
     @Override
