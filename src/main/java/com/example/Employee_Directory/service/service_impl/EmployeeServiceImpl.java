@@ -6,6 +6,7 @@ import com.example.Employee_Directory.model.Employee;
 import com.example.Employee_Directory.repository.EmployeeRepo;
 import com.example.Employee_Directory.service.EmployeeService;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,12 +43,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(Integer id, Employee employee) {
+    @Transactional
+    public Employee updateEmployee(Integer id, EmployeeDTO employeeDTO) {
         try {
             Employee emp = employeeRepo.getReferenceById(id);
-            emp.setFirstName(employee.getFirstName());
-            emp.setLastName(employee.getLastName());
-            emp.setEmail(employee.getEmail());
+
+            // Populate DTO values into the existing entity
+            EmployeePopulator.INSTANCE.updateEmployeeFromDTO(employeeDTO, emp);
+
+            // Optionally set updatedAt
+            emp.setCreatedAt(new Date());  // if you have such a field
+
             return employeeRepo.save(emp);
         } catch (EntityNotFoundException exception) {
             throw new RuntimeException("Employee not found with id: " + id);
@@ -60,7 +66,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             if(!employeeRepo.existsById(id)){
                 throw new RuntimeException("Employee not found with id: "+id);
             }
-
             employeeRepo.deleteById(id);
             return "Employee with id: "+id +" deleted successfully";
 

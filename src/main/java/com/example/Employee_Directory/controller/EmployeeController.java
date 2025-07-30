@@ -62,9 +62,9 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateEmployee(@PathVariable Integer id, @RequestBody Employee emp ) {
+    public ResponseEntity<Object> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO ) {
         try {
-            Employee updatedEmployee = employeeService.updateEmployee(id, emp);
+            Employee updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
             log.info("updateEmployee returned {}", updatedEmployee);
             return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
         } catch (RuntimeException e) {

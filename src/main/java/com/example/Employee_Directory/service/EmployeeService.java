@@ -10,6 +10,6 @@ public interface EmployeeService {
     List<Employee> getAllEmployees();
     Employee addEmployee(EmployeeDTO empDTO);
     Optional<Employee> getEmployeeById(Integer id);
-    Employee updateEmployee(Integer id, Employee employee);
+    Employee updateEmployee(Integer id, EmployeeDTO employeeDTO);
     String deleteEmployee(Integer id);
 }
