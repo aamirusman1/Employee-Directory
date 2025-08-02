@@ -7,6 +7,7 @@ import com.example.Employee_Directory.repository.EmployeeRepo;
 import com.example.Employee_Directory.service.EmployeeService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -34,6 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee addEmployee(EmployeeDTO empDTO) {
         Employee employee = EmployeePopulator.INSTANCE.populateEmployee(empDTO);
         employee.setCreatedAt(new Date());
+        log.info("Employee added (service layer log) : {}", employee);
         return employeeRepo.save(employee);
     }
 

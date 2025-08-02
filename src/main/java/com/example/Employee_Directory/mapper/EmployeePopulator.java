@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface EmployeePopulator {
     EmployeePopulator INSTANCE = Mappers.getMapper(EmployeePopulator.class);
 
