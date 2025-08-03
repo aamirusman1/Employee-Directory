@@ -3,7 +3,7 @@ package com.example.Employee_Directory.service;
 import com.example.Employee_Directory.dto.EmployeeDTO;
 import com.example.Employee_Directory.mapper.EmployeePopulator;
 import com.example.Employee_Directory.model.Employee;
-import com.example.Employee_Directory.repository.EmployeeRepo;
+import com.example.Employee_Directory.repository.employee.EmployeeRepo;
 import com.example.Employee_Directory.service.service_impl.EmployeeServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;

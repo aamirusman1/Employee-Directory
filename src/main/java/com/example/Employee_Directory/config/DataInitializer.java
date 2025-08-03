@@ -3,13 +3,12 @@ package com.example.Employee_Directory.config;
 import com.example.Employee_Directory.model.Employee;
 import com.example.Employee_Directory.model.Role;
 import com.example.Employee_Directory.model.User;
-import com.example.Employee_Directory.repository.EmployeeRepo;
-import com.example.Employee_Directory.repository.RoleRepository;
-import com.example.Employee_Directory.repository.UserRepository;
+import com.example.Employee_Directory.repository.employee.EmployeeRepo;
+import com.example.Employee_Directory.repository.role.RoleRepository;
+import com.example.Employee_Directory.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;

@@ -3,9 +3,10 @@ package com.example.Employee_Directory.controller;
 import com.example.Employee_Directory.dto.SignupRequest;
 import com.example.Employee_Directory.model.Role;
 import com.example.Employee_Directory.model.User;
-import com.example.Employee_Directory.repository.RoleRepository;
-import com.example.Employee_Directory.repository.UserRepository;
+import com.example.Employee_Directory.repository.role.RoleRepository;
+import com.example.Employee_Directory.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,15 +22,18 @@ import java.util.Collections;
 @RequestMapping("/api/signup")
 public class UserSignupController {
 
+    @Autowired
     private UserRepository userRepo;
+    @Autowired
     private RoleRepository roleRepo;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public UserSignupController(UserRepository userRepo, RoleRepository roleRepo, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
-        this.roleRepo = roleRepo;
-        this.passwordEncoder = passwordEncoder;
-    }
+//    public UserSignupController(UserRepository userRepo, RoleRepository roleRepo, PasswordEncoder passwordEncoder) {
+//        this.userRepo = userRepo;
+//        this.roleRepo = roleRepo;
+//        this.passwordEncoder = passwordEncoder;
+//    }
 
     // Common signup handler
     private ResponseEntity<String> registerUser(SignupRequest request, String roleName) {
