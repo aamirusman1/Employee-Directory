@@ -17,6 +17,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
@@ -71,7 +72,7 @@ public class EmployeeControllerTest {
     }
 
 
-    //@WithMockUser()
+
     @Test
     void testAddEmployee() {
         EmployeeDTO dto = new EmployeeDTO();

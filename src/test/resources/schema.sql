@@ -1,20 +1,28 @@
-create table users
-(
-    id       INTEGER not null,
-    username VARCHAR not null,
-    password VARCHAR not null,
-    enabled  BOOLEAN not null
+CREATE TABLE users (
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       username VARCHAR(100) NOT NULL UNIQUE,
+                       password VARCHAR(255) NOT NULL
+
 );
-INSERT INTO users (id, username, password, enabled) VALUES (1, 'admin', '$2a$12$wrOGBnu/bFwthfW21RyyBedMb7r/kDcePewS.gNmlapo2MqkHoPeK', true);
-create table roles
-(
-    id   INTEGER not null,
-    name VARCHAR not null
+
+CREATE TABLE roles (
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(50) NOT NULL UNIQUE
 );
-INSERT INTO roles (id, name) VALUES (1, 'ROLE_ADMIN');
-create table user_roles
-(
-    user_id INTEGER not null,
-    role_id INTEGER not null
+CREATE TABLE user_roles (
+                            user_id BIGINT NOT NULL,
+                            role_id BIGINT NOT NULL,
+                            PRIMARY KEY (user_id, role_id),
+                            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+                            FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE
 );
-INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
+
+
+INSERT INTO roles (id,name) VALUES (1,'ADMIN');
+
+INSERT INTO users (id,username, password)
+VALUES (1,'admin', '$2a$12$wrOGBnu/bFwthfW21RyyBedMb7r/kDcePewS.gNmlapo2MqkHoPeK');
+
+INSERT INTO user_roles (user_id, role_id)
+VALUES (1, 1);
+
