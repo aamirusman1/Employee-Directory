@@ -57,17 +57,6 @@ public class EmployeeControllerTest {
     @BeforeEach
     void setUp() {
         baseUrl = "http://localhost:" + port + "/api/employees";
-        //restTemplate = new TestRestTemplate("admin", "admin");
-        // Wrap TestRestTemplate with credentials
-
-//        Role adminRole = new Role("ROLE_ADMIN");
-//        roleRepository.save(adminRole);
-//
-//        User user = new User();
-//        user.setUsername("admin");
-//        user.setPassword(passwordEncoder.encode("admin"));
-//        user.setRoles(Set.of(adminRole));
-//        userRepository.save(user);
 
     }
 

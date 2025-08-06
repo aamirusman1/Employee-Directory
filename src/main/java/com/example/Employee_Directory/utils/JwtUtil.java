@@ -13,9 +13,10 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256); // Secure 256-bit key
-    private final long EXPIRATION_TIME = 1000 * 60 * 60 * 6; // 6h
 
     public String generateToken(UserDetails userDetails) {
+        // 6h
+        long EXPIRATION_TIME = 1000 * 60 * 60 * 6;
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("authorities", userDetails.getAuthorities())

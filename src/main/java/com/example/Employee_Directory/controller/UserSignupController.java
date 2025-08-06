@@ -29,11 +29,6 @@ public class UserSignupController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    public UserSignupController(UserRepository userRepo, RoleRepository roleRepo, PasswordEncoder passwordEncoder) {
-//        this.userRepo = userRepo;
-//        this.roleRepo = roleRepo;
-//        this.passwordEncoder = passwordEncoder;
-//    }
 
     // Common signup handler
     private ResponseEntity<String> registerUser(SignupRequest request, String roleName) {
