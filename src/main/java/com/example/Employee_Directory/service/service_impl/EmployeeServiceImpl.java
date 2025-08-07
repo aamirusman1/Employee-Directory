@@ -50,12 +50,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Integer id, EmployeeDTO employeeDTO) {
         try {
             Employee emp = employeeRepo.getReferenceById(id);
-
-            // Populate DTO values into the existing entity
             EmployeePopulator.INSTANCE.updateEmployeeFromDTO(employeeDTO, emp);
-
-            // Optionally set updatedAt
-            emp.setCreatedAt(new Date());  // if you have such a field
+            emp.setCreatedAt(new Date());
 
             return employeeRepo.save(emp);
         } catch (EntityNotFoundException exception) {
