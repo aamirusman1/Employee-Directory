@@ -1,4 +1,4 @@
-package com.example.Employee_Directory.config;
+package com.example.Employee_Directory.config.restClient;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
