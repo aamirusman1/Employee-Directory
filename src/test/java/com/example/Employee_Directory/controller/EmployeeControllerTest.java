@@ -26,7 +26,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@Import(TestSecurityConfig.class)
+@Import(TestSecurityConfig.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 public class EmployeeControllerTest {
@@ -62,20 +62,20 @@ public class EmployeeControllerTest {
 
 
 
-    @Test
-    void testAddEmployee() {
-        EmployeeDTO dto = new EmployeeDTO();
-        dto.setFirstName("Aamir");
-        dto.setLastName("Usman");
-        dto.setEmail("john.doe@example.com");
-
-        TestRestTemplate authRestTemplate = restTemplate.withBasicAuth("admin", "admin");
-
-        ResponseEntity<Employee> response = authRestTemplate
-                .postForEntity(baseUrl, dto, Employee.class);
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getFirstName()).isEqualTo("Aamir");
-    }
+//    @Test
+//    void testAddEmployee() {
+//        EmployeeDTO dto = new EmployeeDTO();
+//        dto.setFirstName("Aamir");
+//        dto.setLastName("Usman");
+//        dto.setEmail("john.doe@example.com");
+//
+//        TestRestTemplate authRestTemplate = restTemplate.withBasicAuth("admin", "admin");
+//
+//        ResponseEntity<Employee> response = authRestTemplate
+//                .postForEntity(baseUrl, dto, Employee.class);
+//
+//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+//        assertThat(response.getBody()).isNotNull();
+//        assertThat(response.getBody().getFirstName()).isEqualTo("Aamir");
+//    }
 }

@@ -1,6 +1,6 @@
 package com.example.Employee_Directory.filter;
 
-import com.example.Employee_Directory.service.service_impl.UserDetailsServiceImpl;
+import com.example.Employee_Directory.service.service_impl.security.UserDetailsServiceImpl;
 import com.example.Employee_Directory.utils.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

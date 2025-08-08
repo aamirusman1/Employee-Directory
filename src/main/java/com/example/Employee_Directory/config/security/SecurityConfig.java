@@ -1,7 +1,7 @@
 package com.example.Employee_Directory.config.security;
 
 import com.example.Employee_Directory.filter.JwtAuthenticationFilter;
-import com.example.Employee_Directory.service.service_impl.UserDetailsServiceImpl;
+import com.example.Employee_Directory.service.service_impl.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

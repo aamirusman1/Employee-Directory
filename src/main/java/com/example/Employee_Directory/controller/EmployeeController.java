@@ -53,7 +53,6 @@ public class EmployeeController {
     public  ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id){
         Optional<Employee> emp = employeeService.getEmployeeById(id);
         if(emp.isPresent()){
-            log.info("getEmployeeById returned {}", emp);
             return new ResponseEntity<>(emp.get(), HttpStatus.OK);
         }
         //return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404 Not Found

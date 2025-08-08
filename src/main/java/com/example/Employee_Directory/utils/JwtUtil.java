@@ -16,7 +16,7 @@ public class JwtUtil {
 
     public String generateToken(UserDetails userDetails) {
         // 6h
-        long EXPIRATION_TIME = 1000 * 60 * 60 * 6;
+        long EXPIRATION_TIME =21600000;//  1000 * 60 * 60 * 6;
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("authorities", userDetails.getAuthorities())

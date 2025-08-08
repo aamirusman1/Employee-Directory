@@ -14,11 +14,10 @@ public class JedisConfiguration {
     public JedisPool jedisPool(
             @Value("${spring.data.redis.host}") String host,
             @Value("${spring.data.redis.port}") int port,
-            @Value("${spring.data.redis.password}") String password,
-            @Value("${spring.data.redis.database}") String database) {
+            @Value("${spring.data.redis.password}") String password) {
 
         JedisPoolConfig poolConfig = new JedisPoolConfig();
-
-        return new JedisPool(poolConfig, host, port, Protocol.DEFAULT_TIMEOUT, password, Integer.parseInt(database));
+        poolConfig.setJmxEnabled(false);
+        return new JedisPool(poolConfig, host, port, 3000, password);
     }
 }

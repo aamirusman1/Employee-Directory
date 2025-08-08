@@ -2,7 +2,7 @@ package com.example.Employee_Directory.controller;
 
 import com.example.Employee_Directory.dto.AuthRequest;
 import com.example.Employee_Directory.dto.AuthResponse;
-import com.example.Employee_Directory.service.service_impl.UserDetailsServiceImpl;
+import com.example.Employee_Directory.service.service_impl.security.UserDetailsServiceImpl;
 import com.example.Employee_Directory.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

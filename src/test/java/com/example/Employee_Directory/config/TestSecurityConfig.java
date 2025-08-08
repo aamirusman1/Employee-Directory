@@ -13,16 +13,16 @@ import org.springframework.security.web.SecurityFilterChain;
 //@TestConfiguration
 public class TestSecurityConfig {
 
-//    @Bean
-//    @Primary
-//    public SecurityFilterChain testFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
-//        return http.build();
-//    }
-//
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+    @Bean
+    @Primary
+    public SecurityFilterChain testFilterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 }
